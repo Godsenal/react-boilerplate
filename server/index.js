@@ -31,8 +31,17 @@ if (isDev) {
   app.use(webpackHotMiddleware(compiler));
 
   console.log(`Server started in DEVELOPMENT! ${chalk.green('✓')}`);
+  const fs = middleware.fileSystem;
+
   app.get('*', (req, res) => {
-    res.sendFile(path.join(outputPath, 'index.html'));
+    fs.readFile(path.join(outputPath, 'index.html'), (err, file) => {
+      if (err) {
+        res.sendStatus(404);
+      }
+      else {
+        res.send(file.toString());
+      }
+    });
   });
 }
 else {
