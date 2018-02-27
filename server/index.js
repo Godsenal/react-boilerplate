@@ -1,63 +1,42 @@
 const express = require('express');
 const chalk = require('chalk');
-const path = require('path');
-const compression = require('compression');
-
-const isDev = process.env.NODE_ENV !== 'production';
 const { resolve } = require('path');
 
-const app = express();
-
-// app.use('/api', myApi);
-
-// get the intended host and port number, use localhost and port 3000 if not provided
+const isDev = process.env.NODE_ENV !== 'production';
 const host = (process.env.HOST || 'localhost');
 const port = (process.env.PORT || 3000);
 const outputPath = resolve(process.cwd(), 'dist');
 const publicPath = '/';
 
-if (isDev) {
-  const webpack = require('webpack');
-  const webpackDevMiddleware = require('webpack-dev-middleware');
-  const webpackHotMiddleware = require('webpack-hot-middleware');
-  const config = require('../config/webpack.config.dev.js');
-  const compiler = webpack(config);
-  const middleware = webpackDevMiddleware(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath,
-  });
+const setup = isDev ? require('./setup/setupDev') : require('./setup/setupProd');
 
-  app.use(middleware);
-  app.use(webpackHotMiddleware(compiler));
+/** configuration
+ * 1. mongoose connection
+ * 2. body-parser
+ * 3. api setting
+ * 4. setup for dev or prod enviroment
+ * Finally Open
+*/
 
-  console.log(`Server started in DEVELOPMENT! ${chalk.green('✓')}`);
-  const fs = middleware.fileSystem;
+const app = express();
 
-  app.get('*', (req, res) => {
-    fs.readFile(path.join(outputPath, 'index.html'), (err, file) => {
-      if (err) {
-        res.sendStatus(404);
-      }
-      else {
-        res.send(file.toString());
-      }
-    });
-  });
-}
-else {
-  app.use(compression());
-  app.use(publicPath, express.static(outputPath));
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(outputPath, 'index.html'));
-  });
-}
+// Your api
+
+setup(app, {
+  publicPath,
+  outputPath,
+});
+// get the intended host and port number, use localhost and port 3000 if not provided
 
 app.listen(port, host, (err) => {
   if (err) {
     console.error(chalk.red(err));
   }
+  if (isDev) {
+    console.log(`Server started in Development! ${chalk.green('✓')}`);
+  }
   else {
-    console.log(`Server started ! ${chalk.green('✓')}`);
+    console.log(`Server started! ${chalk.green('✓')}`);
   }
 
   console.log(`

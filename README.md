@@ -8,7 +8,8 @@
 4. Support `css|sass`.
 5. Airbnb code linting extended.
 6. Cross-env for multi platform.
+7. Add redux configuration.
+8. Add react-router configuration.
 
 ### TO-DO
 - [ ] Test environment with jest.
-- [ ] Redux support. (Maybe?)

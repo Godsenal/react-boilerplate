@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import 'babel-polyfill';
+import Root from './containers/Root';
+import './styles/main.scss';
 
 ReactDOM.render(
-  <div>
-    <span>haha</span>
-  </div>,
+  <Root />,
   document.getElementById('app')
 );
