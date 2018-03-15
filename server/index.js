@@ -1,12 +1,10 @@
 const express = require('express');
 const chalk = require('chalk');
-const { resolve } = require('path');
 
 const isDev = process.env.NODE_ENV !== 'production';
 const host = (process.env.HOST || 'localhost');
 const port = (process.env.PORT || 3000);
-const outputPath = resolve(process.cwd(), 'dist');
-const publicPath = '/';
+
 
 const setup = isDev ? require('./setup/setupDev') : require('./setup/setupProd');
 
@@ -20,12 +18,9 @@ const setup = isDev ? require('./setup/setupDev') : require('./setup/setupProd')
 
 const app = express();
 
-// Your api
+// Your api or static setting like app.use('/static', express.static(outputPath));
 
-setup(app, {
-  publicPath,
-  outputPath,
-});
+setup(app);
 // get the intended host and port number, use localhost and port 3000 if not provided
 
 app.listen(port, host, (err) => {
