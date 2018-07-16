@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
 } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
 
 import Home from '../Home';
 import styles from './App.scss';
@@ -19,4 +20,5 @@ class App extends Component {
   }
 }
 
-export default App;
+export default hot(module)(App);
+

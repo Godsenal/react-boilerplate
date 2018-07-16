@@ -1,8 +1,7 @@
-# React Boilerplate project for Own use.
+# React Boilerplate.
 
-## Simple is the Best.
-### Features
-1. Webpack configuration.
+## Features
+1. Webpack(v4) configuration.
 2. Development environment - use `webpack-dev-middleware` and `react-hot-loader`
 3. Minimization and Compression for production.
 4. Support `css|sass`.
@@ -11,5 +10,5 @@
 7. Add redux configuration.
 8. Add react-router configuration.
 
-### TO-DO
+## TO-DO
 - [ ] Test environment with jest.

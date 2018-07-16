@@ -7,7 +7,7 @@
     "test": "cross-env NODE_ENV=test jest",
     "test:cover": "npm run test --coverage",
     "test:clean": "rm -rf ./coverage",
-    "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.prod.js --color -p --progress --hide-modules --display-optimization-bailout",
+    "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.prod.js --color --progress --hide-modules --display-optimization-bailout",
     "build:clean": "rm -rf ./dist",
     "start": "cross-env NODE_ENV=development node server",
     "start:production": "npm run build && npm run start:prod",
