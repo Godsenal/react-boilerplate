@@ -1,0 +1,18 @@
+@import '../../styles/util.scss';
+
+.container {
+  margin-top: 20px;
+}
+.todo {
+  font-size: 24px;
+
+  color: $color-light-black;
+  transition: color 0.2s;
+
+  cursor: pointer;
+}
+.todo_done {
+  color: $color-grey;
+  text-decoration: line-through;
+  transition: all 0.2s;
+}

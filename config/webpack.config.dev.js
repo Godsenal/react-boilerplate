@@ -5,9 +5,7 @@ const common = require('./webpack.common');
 
 module.exports = common({
   mode: 'development',
-  devtool: 'cheap-module-eval-source-map',
-  // Difference between webpack-hot-middleware & react-hot-loader
-  // https://github.com/gaearon/react-hot-loader/issues/489
+  devtool: 'cheap-module-eval-source-map', // https://webpack.js.org/configuration/devtool/#devtool 참고
   babelOption: {
     // This is a feature of `babel-loader` for webpack (not Babel itself).
     // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -26,7 +24,7 @@ module.exports = common({
     minimize: false,
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin(), // webpack-hot-loader를 위한 plugin
     new HtmlWebpackPlugin({ // Create HTML file that includes references to bundled CSS and JS.
       template: 'src/index.html',
       minify: {

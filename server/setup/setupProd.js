@@ -1,5 +1,5 @@
 const path = require('path');
-const compression = require('compression');
+const compression = require('compression'); // compression middleware
 const express = require('express');
 
 module.exports = function setupProd(app) {

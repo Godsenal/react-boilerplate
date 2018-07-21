@@ -1,0 +1,12 @@
+@import '../util.scss';
+a {
+    text-decoration: none;
+    color: $color-light-black;
+    &:hover {
+        text-decoration: underline;
+        color: $color-blue;
+    }
+    &::before {
+      content: "🔍"
+    }
+}

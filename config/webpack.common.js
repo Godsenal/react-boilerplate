@@ -4,6 +4,11 @@ const path = require('path');
 
 const devMode = process.env.NODE_ENV !== 'production';
 
+/*
+  webpack-merge를 이용하여 common 파일을 합쳐도 됨.
+  여기서는 config의 공통 세팅인 common 함수를 통해
+  development | production 과 합침.
+*/
 module.exports = (option) => ({
   target: 'web',
   mode: option.mode,
@@ -18,14 +23,14 @@ module.exports = (option) => ({
     ...option.output,
   },
   plugins: [
+    // compile 타임의 생성되는 global constant를 만들어 줌.
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
     new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
+      // webpack v3 ExtractTextWebpackPlugin -> webpack v4 MiniCssExtractPlugin
       filename: devMode ? '[name].css' : '[name].[hash].css',
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
     }),
@@ -38,6 +43,8 @@ module.exports = (option) => ({
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: option.babelOption,
+        // react-hot-loader를 위한 세팅.
+        // webpack.config.dev.js의 babelOption 참고.
       },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,

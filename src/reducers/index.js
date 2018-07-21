@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import test from './test';
+import todo from './todo';
+import filter from './filter';
 
 const rootReducer = combineReducers({
-  test,
+  todo,
+  filter,
 });
 
 export default rootReducer;

@@ -4,7 +4,7 @@ import rootReducer from '../reducers';
 
 function configureStoreProd(initialState) {
   const middlewares = [
-    /* Redux middlewares like thunks */
+    /* Redux middlewares like thunk, saga */
   ];
 
   return createStore(rootReducer, initialState, compose(
@@ -20,12 +20,13 @@ function configureStoreDev(initialState) {
     reduxImmutableStateInvariant(),
     /* Redux middlewares like thunks */
   ];
-
+  // https://github.com/zalmoxisus/redux-devtools-extension setting
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   const store = createStore(rootReducer, initialState, composeEnhancers(
     applyMiddleware(...middlewares)
   ));
-
+  // https://webpack.js.org/api/hot-module-replacement/
+  // enable hot module replacement on reducer.
   if (module.hot) {
     module.hot.accept('../reducers', () => {
       const nextReducer = require('../reducers').default;

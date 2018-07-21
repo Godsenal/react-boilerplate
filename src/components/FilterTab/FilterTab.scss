@@ -1,0 +1,18 @@
+@import '../../styles/util.scss';
+
+.container {
+  margin-top: 1rem;
+}
+.tab {
+  color: $color-grey;
+  margin-right: 10px;
+  cursor: pointer;
+
+  &:hover {
+    @extend .tab_active;
+    transition: color 0.2s;
+  }
+}
+.tab_active {
+  color: $color-light-black;
+}
