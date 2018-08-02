@@ -11,7 +11,8 @@ React boilerplate.
 5. Airbnb code linting extended.
 6. Multi platform with cross-env.
 7. Add redux configuration.
-8. Add react-router configuration.
+8. Add redux-saga configuration.
+9. Add react-router configuration.
 
 ## TO-DO
 - [ ] Test environment with jest.

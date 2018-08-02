@@ -1,14 +1,20 @@
 @import '../../styles/util.scss';
 
 .container {
+  display: flex;
+  align-items: center;
+
   margin-top: 20px;
 }
 .todo {
+  flex: 1;
   font-size: 24px;
-
   color: $color-light-black;
-  transition: color 0.2s;
 
+  &:hover {
+    color: $color-grey;
+    transition: color 0.2s;
+  }
   cursor: pointer;
 }
 .todo_done {

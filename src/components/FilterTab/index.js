@@ -30,4 +30,3 @@ FilterTab.propTypes = {
 };
 
 export default FilterTab;
-

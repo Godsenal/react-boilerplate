@@ -10,3 +10,17 @@ a {
       content: "🔍"
     }
 }
+button {
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: none;
+
+    padding: 5px 10px;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: $color-grey;
+        transition: background-color 0.2s;
+    }
+}
