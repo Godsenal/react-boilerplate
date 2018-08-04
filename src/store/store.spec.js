@@ -48,6 +48,7 @@ describe('Store', () => {
       'todo3',
     ];
     const filter = 'COMPLETED';
+    // 위 should handle toggling todos 에서 toggle 한 todo만 보여야 함.
     const expected = [
       {
         id: 0,
