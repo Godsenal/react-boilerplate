@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest",
+    "test:watch": "cross-env NODE_ENV=test jest --watch",
     "test:cover": "npm run test --coverage",
     "test:clean": "rm -rf ./coverage",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.config.prod.js --color --progress --hide-modules --display-optimization-bailout",

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { FetchButton, FilterTab, TodoInput, TodoItem } from '../../components';
 import * as TodoActions from '../../actions/todo';
 import * as FilterActions from '../../actions/filter';
-import { getFilteredTodos } from '../../reducers/todo';
+import { getFilteredTodos } from '../../selectors/todo';
 import styles from './TodoPage.scss';
 
 const FILTER_TYPES = ['ALL', 'INCOMPLETED', 'COMPLETED'];
