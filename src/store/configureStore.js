@@ -1,12 +1,16 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
-import middlewares, { sagaMiddleware } from './middlewares';
+import middlewares from './middlewares';
 import rootReducer from '../reducers';
 import rootSaga from '../sagas';
 
 function configureStoreProd(initialState) {
+  const { sagaMiddleware } = middlewares;
+  const prodMiddlewares = [
+    sagaMiddleware,
+  ];
   const store = createStore(rootReducer, initialState, compose(
-    applyMiddleware(...middlewares)
+    applyMiddleware(...prodMiddlewares)
   ));
   sagaMiddleware.run(rootSaga);
   return store;
@@ -16,9 +20,11 @@ function configureStoreProd(initialState) {
    which watct state's immutability
 */
 function configureStoreDev(initialState) {
+  const { sagaMiddleware, logger } = middlewares;
   const devMiddlewares = [
     reduxImmutableStateInvariant(),
-    ...middlewares,
+    sagaMiddleware,
+    logger,
     /* Redux middlewares like thunks */
   ];
   // https://github.com/zalmoxisus/redux-devtools-extension setting
@@ -34,10 +40,12 @@ function configureStoreDev(initialState) {
       store.replaceReducer(nextReducer);
     });
   }
+
   sagaMiddleware.run(rootSaga);
   return store;
 }
 
 const configureStore = process.env.NODE_ENV === 'production' ? configureStoreProd : configureStoreDev;
+
 
 export default configureStore;

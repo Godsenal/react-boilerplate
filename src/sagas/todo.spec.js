@@ -28,7 +28,7 @@ describe('Watching todos', () => {
     // When test saga(generator) should remind 'call', 'race' ...etc
     // isn't actually performed.
     // https://github.com/jfairbank/redux-saga-test-plan/issues/38
-    it('Should handle success', () => {
+    it('Should handle fetch success', () => {
       // arrange
       const expected = put(fetchTodoSuccess([]));
       // act
@@ -36,7 +36,7 @@ describe('Watching todos', () => {
       // assert
       expect(actual).toEqual(expected);
     });
-    it('Should handle error', () => {
+    it('Should handle fetch error', () => {
       // arrange
       const expected = put(fetchTodoFailure('error'));
       // act
