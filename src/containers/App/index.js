@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 
-import { Home, TodoPage } from '../';
+import { Home, TodoPage } from '..';
 import { Header } from '../../components';
 
 class App extends Component {

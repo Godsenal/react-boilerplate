@@ -31,6 +31,8 @@
     "compression": "^1.7.3",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^5.2.0",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-babel": "^5.1.0",
@@ -71,6 +73,9 @@
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/tools/mocks/fileMock.js",
       ".*\\.(css|less|styl|scss|sass)$": "<rootDir>/tools/mocks/cssMock.js"
-    }
+    },
+    "setupFiles": [
+      "./tools/enzymeTestAdapterSetup.js"
+    ]
   }
 }

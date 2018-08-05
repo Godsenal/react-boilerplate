@@ -6,14 +6,17 @@ export default class TodoInput extends Component {
   state = {
     value: '',
   }
+
   static propTypes = {
     addTodo: PropTypes.func.isRequired,
   }
+
   handleChange = e => this.setState({ value: e.target.value });
   handleEnter = e => {
     const { value } = this.state;
     if (e.key === 'Enter' && value) {
-      this.props.addTodo(value);
+      const { addTodo } = this.props;
+      addTodo(value);
       this.setState({
         value: '',
       });
