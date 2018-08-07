@@ -1,21 +1,21 @@
-import { all, fork, call, put, takeLatest } from 'redux-saga/effects';
+import { all, fork, call, put, take } from 'redux-saga/effects';
 import { FETCH_TODO } from '../constants/actionTypes';
 import { fetchTodoSuccess, fetchTodoFailure } from '../actions/todo';
 import { generateId } from '../utils/id';
 
 // create fake todos
-export function makeFakeTodos() {
+export function makeFakeTodos(ms) {
   return new Promise(resolve => (
     setTimeout(() => resolve([...Array(3)].map(() => ({
       id: generateId(),
       description: 'INITIAL TODO',
       done: false,
-    }))), 3000)
+    }))), ms)
   ));
 }
 export function* fetchTodo() {
   try {
-    const todos = yield call(makeFakeTodos);
+    const todos = yield call(makeFakeTodos, 1000);
     yield put(fetchTodoSuccess(todos));
   }
   catch (err) {
@@ -25,7 +25,10 @@ export function* fetchTodo() {
   }
 }
 export function* watchFetchTodo() {
-  yield takeLatest(FETCH_TODO, fetchTodo);
+  while (true) {
+    yield take(FETCH_TODO);
+    yield fork(fetchTodo);
+  }
 }
 
 export default function* () {

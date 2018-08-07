@@ -1,14 +1,24 @@
-import { put, takeLatest, call } from 'redux-saga/effects';
+import { put, take, fork, call } from 'redux-saga/effects';
 import { makeFakeTodos, fetchTodo, watchFetchTodo } from './todo';
 import { FETCH_TODO } from '../constants/actionTypes';
 import { fetchTodoSuccess, fetchTodoFailure } from '../actions/todo';
 
 describe('Watching todos', () => {
   const watching = watchFetchTodo();
-  it('Should handle waching todos', () => {
+  it('Should take FETCH_TODO action', () => {
     // arrange
-    const expected = takeLatest(FETCH_TODO, fetchTodo);
+    const expected = take(FETCH_TODO);
 
+    // act
+    const actual = watching.next().value;
+
+    // assert
+    expect(actual).toEqual(expected);
+  });
+  it('Should handle forking todos', () => {
+    // arrange
+    take(FETCH_TODO);
+    const expected = fork(fetchTodo);
     // act
     const actual = watching.next().value;
 
@@ -49,6 +59,7 @@ describe('Watching todos', () => {
       const expected = fetching.next().done;
       // act
       const actual = true;
+      // assert
       expect(actual).toEqual(expected);
     });
   });

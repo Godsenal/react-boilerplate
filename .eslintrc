@@ -111,6 +111,7 @@
         ]
       }
     ],
+    "import/no-cycle": "off",
     "import/no-dynamic-require": "off",
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "import/no-unresolved": "warn",

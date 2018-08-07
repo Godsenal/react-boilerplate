@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { App } from './';
+import { App } from '.';
 import configureStore from '../store/configureStore';
 
 const store = configureStore();
