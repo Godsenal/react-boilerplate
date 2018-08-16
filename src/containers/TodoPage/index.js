@@ -9,7 +9,7 @@ import styles from './TodoPage.scss';
 
 const FILTER_TYPES = ['ALL', 'INCOMPLETED', 'COMPLETED'];
 
-const TodoPage = ({ filteredTodos, filter, fetchStatus, addTodo, deleteTodo, toggleTodo, fetchTodo, setFilter }) => (
+export const TodoPage = ({ filteredTodos, filter, fetchStatus, addTodo, deleteTodo, toggleTodo, fetchTodo, setFilter }) => (
   <div className={styles.container}>
     <FetchButton fetchStatus={fetchStatus} fetchTodo={fetchTodo} />
     <TodoInput addTodo={addTodo} />

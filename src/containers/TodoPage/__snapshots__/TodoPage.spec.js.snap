@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TodoPage snapshot test renders correctly 1`] = `
+<div>
+  <button
+    onClick={[Function]}
+    type="button"
+  >
+    Fetch fake todos STATUS: 
+  </button>
+  <div>
+    <input
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      placeholder="What needs to be done?"
+      value=""
+    />
+  </div>
+  <div>
+    <span
+      className="undefined false"
+      onClick={[Function]}
+    >
+      ALL
+    </span>
+    <span
+      className="undefined false"
+      onClick={[Function]}
+    >
+      INCOMPLETED
+    </span>
+    <span
+      className="undefined false"
+      onClick={[Function]}
+    >
+      COMPLETED
+    </span>
+  </div>
+</div>
+`;

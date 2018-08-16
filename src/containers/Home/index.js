@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Icon from '../../images/react-icon.png';
 import styles from './Home.scss';
 
-const Home = () => (
+export const Home = () => (
   <div className={styles.container}>
     <h1 className={styles.header}>
       React-boilerplate

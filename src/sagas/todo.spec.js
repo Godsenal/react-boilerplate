@@ -29,7 +29,7 @@ describe('Watching todos', () => {
     const fetching = fetchTodo();
     it('Should handle making todos', () => {
       // arrange
-      const expected = call(makeFakeTodos);
+      const expected = call(makeFakeTodos, 1000);
       // act
       const actual = fetching.next().value;
       // assert

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App snapshot renders correctly 1`] = `
+<div>
+  <div>
+    <div>
+      <span>
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          Home
+        </a>
+      </span>
+    </div>
+  </div>
+</div>
+`;

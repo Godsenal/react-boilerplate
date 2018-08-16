@@ -5,7 +5,7 @@ import { hot } from 'react-hot-loader';
 import { Home, TodoPage } from '..';
 import { Header } from '../../components';
 
-class App extends Component {
+export class App extends Component {
   render() {
     return (
       <div>
