@@ -1,10 +1,7 @@
 const express = require('express');
 const chalk = require('chalk');
 
-const isDev = process.env.NODE_ENV !== 'production';
-const host = (process.env.HOST || 'localhost');
-const port = (process.env.PORT || 3000);
-
+const { isDev, host, port } = require('./config');
 
 const setup = isDev ? require('./setup/setupDev') : require('./setup/setupProd');
 

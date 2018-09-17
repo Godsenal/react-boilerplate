@@ -42,9 +42,6 @@ module.exports = (option) => ({
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        options: option.babelOption,
-        // react-hot-loader를 위한 세팅.
-        // webpack.config.dev.js의 babelOption 참고.
       },
       {
         test: /\.eot(\?v=\d+.\d+.\d+)?$/,
