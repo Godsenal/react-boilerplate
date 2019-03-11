@@ -1,5 +1,6 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const common = require('./webpack.common');
 
@@ -36,6 +37,11 @@ module.exports = common({
       },
       inject: true,
       // custom
+    }),
+    new MiniCssExtractPlugin({
+      // webpack v3 ExtractTextWebpackPlugin -> webpack v4 MiniCssExtractPlugin
+      filename: '[name].[hash].css',
+      chunkFilename: '[id].[hash].css',
     }),
   ],
 });

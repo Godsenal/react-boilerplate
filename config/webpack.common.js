@@ -9,7 +9,7 @@ const devMode = process.env.NODE_ENV !== 'production';
   여기서는 config의 공통 세팅인 common 함수를 통해
   development | production 과 합침.
 */
-module.exports = (option) => ({
+module.exports = option => ({
   target: 'web',
   mode: option.mode,
   resolve: {
@@ -28,11 +28,6 @@ module.exports = (option) => ({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
-    }),
-    new MiniCssExtractPlugin({
-      // webpack v3 ExtractTextWebpackPlugin -> webpack v4 MiniCssExtractPlugin
-      filename: devMode ? '[name].css' : '[name].[hash].css',
-      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
     }),
     ...option.plugins,
   ],
@@ -105,33 +100,24 @@ module.exports = (option) => ({
         ],
       },
       {
-        test: /(\.css|\.scss|\.sass)$/,
+        test: /\.(s*)css$/,
         use: [
           devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: require.resolve('css-loader'),
             options: {
               importLoaders: 1,
-              minimize: true,
-              sourceMap: true,
               modules: true,
-              localIdentName: '[name]__[local]__[hash:base64:5]',
-            },
-          }, {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [
-                require('autoprefixer'),
-              ],
-              sourceMap: true,
-            },
-          }, {
-            loader: 'sass-loader',
-            options: {
-              includePaths: [path.resolve(__dirname, 'src', 'scss')],
-              sourceMap: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
             },
           },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [require('autoprefixer')],
+            },
+          },
+          'sass-loader',
         ],
       },
     ],
